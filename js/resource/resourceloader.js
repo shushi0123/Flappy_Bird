@@ -1,12 +1,4 @@
-const resource = [
-    ['background', 'res/background.png'],
-    ['begin', 'res/begin.png'],
-    ['birds', 'res/birds.png'],
-    ['land', 'res/land.png'],
-    ['pie_up', 'res/pie_up.png'],
-    ['pie_down', 'res/pie_down.png'],
-    ['start_button', 'res/start_button.png'],
-];
+import {resource} from "./resource.js";
 
 export class ResourceLoader {
     constructor() {
@@ -17,6 +9,10 @@ export class ResourceLoader {
             this.resMap.set(key, image);
         }
         // console.log(this.resMap);
+    }
+
+    get(key) {
+        return this.resMap.get(key)
     }
 
     onLoaded(callback) {
