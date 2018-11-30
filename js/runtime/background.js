@@ -1,6 +1,10 @@
+import {Spirit} from "./spirit.js";
+import {DataProvider} from "./dataprovider.js";
+
 export class BackGround extends Spirit {
-    constructor(ctx,image) {
-        super(ctx,image);
+    constructor() {
+        const image = DataProvider.getInstance().resourceMap.get('background');
+        super(image);
     }
 
     draw() {

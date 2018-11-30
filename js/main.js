@@ -1,27 +1,37 @@
 import {ResourceLoader} from "./resource/resourceloader.js";
 import {DataProvider} from "./runtime/dataprovider.js";
 import {BackGround} from "./runtime/background.js";
+import {BeginButton} from "./runtime/beginbutton.js";
+import {Land} from "./runtime/land.js";
+import {UpPencil} from "./runtime/uppencil.js";
+import {DownPencil} from "./runtime/downpencil.js";
+import {Director} from "./director.js";
 
 export class Main {
     constructor() {
         this.resourceloader = new ResourceLoader();
-        this.resourceloader.onLoaded(this.resourceFirstLoaded);
+        this.resourceloader.onLoaded((map) => this.onFirstResourceLoaded(map));
         this.dataProvider = DataProvider.getInstance();
+        this.director = new Director()
     }
 
 
-    resourceFirstLoaded(map) {
-        // console.log('resource loaded')
-        const canvas = document.getElementById('game_canvas');
-        const ctx = canvas.getContext('2d');
+    onFirstResourceLoaded(map) {
+        let canvas = document.getElementById('game_canvas');
+        let ctx = canvas.getContext('2d');
         this.ctx = ctx;
+        this.dataProvider.canvas = canvas;
         this.dataProvider.ctx = this.ctx;
-        this.dataProvider.res = map;
+        this.dataProvider.resourceMap = map;
         this.init();
     }
 
     init() {
-        const background = new BackGround(this.dataProvider.ctx,this.resourceloader.get('background'));
-        background.draw();
+        this.dataProvider.put('background', BackGround)
+            .put('begin', BeginButton)
+            .put('land',Land)
+            .put('uppencil',UpPencil);
+
+        this.director.run();
     }
 }
