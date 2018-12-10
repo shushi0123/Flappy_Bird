@@ -14,4 +14,6 @@ export class Land extends Spirit {
         this.dstHeight = this.image.height;
         super.draw();
     }
+
+
 }

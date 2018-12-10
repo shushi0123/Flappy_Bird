@@ -3,9 +3,10 @@ import {DataProvider} from "./runtime/dataprovider.js";
 import {BackGround} from "./runtime/background.js";
 import {BeginButton} from "./runtime/beginbutton.js";
 import {Land} from "./runtime/land.js";
-import {UpPencil} from "./runtime/uppencil.js";
-import {DownPencil} from "./runtime/downpencil.js";
 import {Director} from "./director.js";
+import {PencilPair} from "./runtime/pencilpair.js";
+import {Birds} from "./runtime/birds.js";
+
 
 export class Main {
     constructor() {
@@ -23,6 +24,7 @@ export class Main {
         this.dataProvider.canvas = canvas;
         this.dataProvider.ctx = this.ctx;
         this.dataProvider.resourceMap = map;
+        this.dataProvider.moveSpeed = 2;
         this.init();
     }
 
@@ -30,7 +32,9 @@ export class Main {
         this.dataProvider.put('background', BackGround)
             .put('begin', BeginButton)
             .put('land',Land)
-            .put('uppencil',UpPencil);
+            .put('birds',Birds);
+        // .put('pencilpair',PencilPair);
+
 
         this.director.run();
     }

@@ -1,7 +1,15 @@
 import {Spirit} from "./spirit.js";
 import {DataProvider} from "./dataprovider.js";
 
-export class UpPencil extends Spirit {
+export class Pencil extends Spirit {
+    is_outOfSreen() {
+        if (this.dstX + this.dstWidth < 0)
+            return true;
+        return false;
+    }
+}
+
+export class UpPencil extends Pencil {
     constructor() {
         const image = DataProvider.getInstance().resourceMap.get('pie_up');
         super(image);
@@ -10,11 +18,11 @@ export class UpPencil extends Spirit {
         //this.dstX 是移动变量
         //this.dstY 是变量
         this.dataProvider = DataProvider.getInstance();
-        this.dstWidth = this.image.width/2;
+        this.dstWidth = this.image.width / 2;//是否要根据屏幕的宽度来自适应调节？
     }
 
-    draw() {
-        this.dstX = this.dstX - this.moveSpeed;
-        super.draw();
+    draw(yOffset) {
+        this.dstX = this.dstX - this.dataProvider.moveSpeed;
+        super.draw(this.srcX, this.srcY, this.srcWidth, this.srcHeight, this.dstX, yOffset, this.dstWidth, this.dstHeight);
     }
 }

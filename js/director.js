@@ -10,8 +10,11 @@ export class Director{
         let background =  this.dataProvider.get('background');
         background.draw();
 
-        let uppencil = this.dataProvider.get('uppencil');
-        uppencil.draw();
+        // let penciltest = this.dataProvider.get('pencilpair');
+        // penciltest.draw();
+
+        let birds = this.dataProvider.get('birds');
+        birds.draw();
 
         let land =  this.dataProvider.get('land');
         land.draw();
