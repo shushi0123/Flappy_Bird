@@ -25,17 +25,26 @@ export class Main {
         this.dataProvider.ctx = this.ctx;
         this.dataProvider.resourceMap = map;
         this.dataProvider.moveSpeed = 2;
+        this.dataProvider.isGameOver = true;
+        this.dataProvider.isGameStarted = false;
         this.init();
     }
 
     init() {
+        this.dataProvider.isGameStarted=true;
+        this.dataProvider.isGameOver = false;
         this.dataProvider.put('background', BackGround)
             .put('begin', BeginButton)
             .put('land',Land)
-            .put('birds',Birds);
-        // .put('pencilpair',PencilPair);
+            .put('birds',Birds)
+            .put('pencilpairs',[]);
 
+        this.registerEvent();
 
         this.director.run();
+    }
+
+    registerEvent(){
+
     }
 }

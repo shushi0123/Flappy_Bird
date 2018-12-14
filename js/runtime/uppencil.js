@@ -1,15 +1,8 @@
 import {Spirit} from "./spirit.js";
 import {DataProvider} from "./dataprovider.js";
 
-export class Pencil extends Spirit {
-    is_outOfSreen() {
-        if (this.dstX + this.dstWidth < 0)
-            return true;
-        return false;
-    }
-}
 
-export class UpPencil extends Pencil {
+export class UpPencil extends Spirit {
     constructor() {
         const image = DataProvider.getInstance().resourceMap.get('pie_up');
         super(image);

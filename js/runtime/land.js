@@ -9,6 +9,10 @@ export class Land extends Spirit {
 
     draw() {
         this.dataProvider = DataProvider.getInstance();
+        this.srcX = this.srcX + this.dataProvider.moveSpeed;
+        if (this.srcX + this.dataProvider.canvas.width+20 > this.image.width)
+            this.srcX = 0;
+        this.srcWidth = this.dataProvider.canvas.width;
         this.dstY = this.dataProvider.canvas.height - this.image.height;
         this.dstWidth = this.dataProvider.canvas.width;
         this.dstHeight = this.image.height;

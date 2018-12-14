@@ -1,7 +1,7 @@
 import {DataProvider} from "./dataprovider.js";
-import {Pencil} from "./uppencil.js";
+import {Spirit} from "./spirit.js";
 
-export class DownPencil extends Pencil {
+export class DownPencil extends Spirit {
     constructor() {
         const image = DataProvider.getInstance().resourceMap.get('pie_down');
         super(image);
