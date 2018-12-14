@@ -23,11 +23,13 @@ export class Director {
             value.draw()
         })
 
+        let land = this.dataProvider.get('land');
+        land.draw();
+
         let birds = this.dataProvider.get('birds');
         birds.draw();
 
-        let land = this.dataProvider.get('land');
-        land.draw();
+
 
         let striked = birds.isStrike(pencilpairs,land);
         if(striked)
@@ -35,6 +37,9 @@ export class Director {
 
         if( this.dataProvider.isGameOver )
             return;
+
+
+
         requestAnimationFrame(() => this.run());
     }
 }

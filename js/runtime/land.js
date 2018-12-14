@@ -17,6 +17,7 @@ export class Land extends Spirit {
         this.dstWidth = this.dataProvider.canvas.width;
         this.dstHeight = this.image.height;
         super.draw();
+        // console.log('land:'+this.dstX+' '+this.dstY+' '+this.dstWidth+' '+this.dstHeight);
     }
 
 

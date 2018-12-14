@@ -46,26 +46,36 @@ export class Birds extends Spirit {
         let w2 = map2.get('RectWidth');
         let h2 = map2.get('RectHeight');
         if (
-            Math.abs(x1 - x2) < w1 / 2 + w2 / 2 //横向判断
+            Math.abs(x1 + w1 / 2 - x2 - w2 / 2) < (w1 / 2 + w2 / 2) //横向判断
             &&
-            Math.abs(y1 - y2) < h1 / 2 + h2 / 2 //纵向判断
+            Math.abs(y1 + h1 / 2 - y2 - h2 / 2) < (h1 / 2 + h2 / 2) //纵向判断
         ) {
+            // console.log(x1, y1, w1, h1);
+            // console.log(x2, y2, w2, h2);
             return true;
         }
         return false;
+
+        //return (x1<x2+w2) && (y1<y2+h2) && (x1+w1>x2) && (y1+h1>y2);
 
     }
 
 
     isStrike(penpairs_array, land_obj) {
-        if (this.rectangleCol(this, land_obj))
+        if (this.rectangleCol(this, land_obj)) {
+            console.log('land isStrike:', this.getPostionOfSreen(), land_obj.getPostionOfSreen());
             return true;
+        }
         let striked = false;
         penpairs_array.forEach((penpairs) => {
-            if (this.rectangleCol(this, penpairs.upPen))
+            if (this.rectangleCol(this, penpairs.upPen)) {
+                // console.log('upPen isStrike');
                 striked = true;
-            if (this.rectangleCol(this, penpairs.downPen))
+            }
+            if (this.rectangleCol(this, penpairs.downPen)) {
+                // console.log('downPen isStrike');
                 striked = true;
+            }
         })
         return striked;
     }
